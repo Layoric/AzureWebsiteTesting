@@ -40,25 +40,11 @@ namespace AzureWebsiteTesting.ServiceInterface
             result.Location = "/";
             return result;
         }
-
-        public object Any(DoesntWorkOnAzureSimple request)
-        {
-            var responseStream = new MemoryStream("Test".ToUtf8Bytes());
-            var result = new HttpResult(responseStream, "text/html");
-            result.Headers.Add("Content-Length", "4");
-            return result;
-        }
     }
 
 
     [Route("/azure/works")]
     public class WorksOnAzure
-    {
-
-    }
-
-    [Route("/azure/doesntworksimple")]
-    public class DoesntWorkOnAzureSimple
     {
 
     }
