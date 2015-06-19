@@ -1,0 +1,29 @@
+﻿@inherits ViewPage
+@{
+    ViewBag.Title = "Hello World Service";
+}
+<div>
+    <div>
+        <input class="form-control input-lg" id="Name" type="text" placeholder="Type your name">
+        <p id="helloResult" style="margin-top: 15px;font-size: large"></p>
+    </div>
+</div>
+<script>
+    $('#Name').keyup(function() {
+        var name = $('#Name').val();
+        if (name) {
+            $.getJSON('/hello/' + name)
+                .success(function(response) {
+                    $('#helloResult').html(response.Result);
+                });
+        } else {
+            $('#helloResult').html('');
+        }
+    });
+</script>
+<div>
+    <h2><a href="/azure/works">Works on Azure Websites</a></h2>
+    <h2><a href="/azure/doesntwork">Doesn't work on Azure Websites</a></h2>
+    <h2><a href="/azure/doesntworksimple">Doesn't work on Azure Websites Simple.</a></h2>
+</div>
+
